@@ -12,12 +12,16 @@
         </tr>
         </thead>
         <tbody>
-                <tr>
-                    <td>{{ $users->title }}</td>
-                    <td>{{ $users->author }}</td>
-                    <td>{{ $users->editorial }}</td>
-                    <td>{{ $users->lendingDate }}</td>
-                </tr>
+        @foreach($usersWithBooks as $key => $user)
+            <tr>
+                <td>{{ $user->title }}</td>
+                <td>{{ $user->author }}</td>
+                <td>{{ $user->editorial }}</td>
+                @foreach($user->users as $pivot)
+                    <td>{{ $pivot->pivot->lendingDate  }}</td>
+            </tr>
+        @endforeach
+        @endforeach
         </tbody>
     </table>
 @endsection

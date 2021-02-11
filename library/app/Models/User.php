@@ -41,7 +41,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function copiesBooks()  {
-        return $this->belongsToMany(CopyBook::class, 'lendings')->withPivot('copy_book_id');
+    public function books()  {
+        return $this->belongsToMany('\App\Models\Book', 'book_user')->withPivot('book_id', 'lendingDate');
     }
 }

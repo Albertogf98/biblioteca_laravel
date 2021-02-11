@@ -26,10 +26,10 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/admin', 'App\Http\Controllers\LibraryController@getAdminView');
+Route::get('/admin', 'App\Http\Controllers\LibraryController@getAdminView')->middleware('is_admin');
 
 Route::get('/admin/create', 'App\Http\Controllers\LibraryController@createAdminView');
 
-Route::get('/admin/edit/{id?}', 'App\Http\Controllers\LibraryController@createAdminView');
+Route::get('/admin/edit/{id?}', 'App\Http\Controllers\LibraryController@editAdminView');
 
 Route::get('/user', 'App\Http\Controllers\LibraryController@getUserView');

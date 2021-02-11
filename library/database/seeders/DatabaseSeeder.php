@@ -14,39 +14,42 @@ class DatabaseSeeder extends Seeder {
     public function run() {
         // \App\Models\User::factory(10)->create();
 
-//        self::seedUser();
-        self::seedCopyBook();
-        self::seedLendings();
+    //  self::seedUser();
+      //self::seedBooks();
+      self::seedBookUser();
 
     }
 
     public function seedUser() {
         $bcrypt = bcrypt('daw2021GF');
 
-    //    DB::table('users')->truncate();
         DB::table('users')->insert([
-            'name' => 'alberto',
+            /*'name' => 'alberto',
             'secondName' => 'Gandoy Florido',
             'email' => 'admin@biblioteca.com',
+            'password' => $bcrypt,*/
+            'name' => 'belén',
+            'secondName' => 'Jimenez Ranchal',
+            'email' => 'bjiran@biblioteca.com',
             'password' => $bcrypt,
         ]);
     }
 
-    public function seedCopyBook() {
+    public function seedBooks() {
 
-        DB::table('copy_books')->insert([
-            'title' => 'La cenicienta',
-            'author' => 'María Benitez Fuentes',
-            'editorial' => 'Anaya',
+        DB::table('books')->insert([
+            'title' => 'El Alquimista',
+            'author' => 'Paulo Coelho',
+            'editorial' => 'Moebius',
         ]);
     }
 
-    public function seedLendings() {
-
-        DB::table('lendings')->insert([
-            'user_id' => 1,
-            'copy_book_id' => 2,
-            'lendingDate' => '2021-02-05'
+    public function seedBookUser() {
+        $currentDate = now();
+        DB::table('book_user')->insert([
+            'user_id' => 2,
+            'book_id' => 5,
+            'lendingDate' => $currentDate,
         ]);
     }
 }

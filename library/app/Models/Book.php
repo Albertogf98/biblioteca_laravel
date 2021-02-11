@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CopyBook extends Model {
+class Book extends Model {
     //use HasFactory;
   //  protected $id, $title, $author, $editorial;
 
@@ -13,6 +13,6 @@ class CopyBook extends Model {
 
 
     public function users()  {
-        return $this->belongsToMany(User::class, 'lendings')->withPivot('user_id');
+        return $this->belongsToMany('\App\Models\User', 'book_user')->withPivot('user_id', 'lendingDate');
     }
 }
